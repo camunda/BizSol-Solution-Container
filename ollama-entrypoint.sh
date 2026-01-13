@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Default models to ensure are present
+DEFAULT_MODELS=(
+  "llama-guard3:1b" "gpt-oss-safeguard"
+)
+
+# Allow runtime override via OLLAMA_MODELS env var (comma-separated)
+if [ -n "$OLLAMA_MODELS" ]; then
+  IFS=',' read -ra MODELS <<< "$OLLAMA_MODELS"
+  echo "//> Using models from OLLAMA_MODELS env: ${MODELS[*]}"
+else
+  MODELS=("${DEFAULT_MODELS[@]}")
+fi
+
 # Start Ollama server in the background
 ollama serve &
 
@@ -72,14 +85,16 @@ until ollama list > /dev/null 2>&1; do
 done
 echo "//> Ollama is ready."
 
-# Check if llama-guard3:1b model exists, if not pull it
-if ! ollama list | grep -q "llama-guard3:1b"; then
-  echo "//> Pulling llama-guard3:1b model..."
-  ollama pull llama-guard3:1b
-  echo "//> Model llama-guard3:1b pulled successfully."
-else
-  echo "//> Model llama-guard3:1b already exists."
-fi
+# Check each model and pull if not present
+for MODEL in "${MODELS[@]}"; do
+  if ! ollama list | grep -q "$MODEL"; then
+    echo "//> Pulling $MODEL model..."
+    ollama pull "$MODEL"
+    echo "//> Model $MODEL pulled successfully."
+  else
+    echo "//> Model $MODEL already exists."
+  fi
+done
 
 # Keep the container running by waiting on the Ollama process
 wait

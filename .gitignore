@@ -1,0 +1,4 @@
+# don't version models
+ollama
+# don't version localstorage
+open-webui

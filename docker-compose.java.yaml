@@ -27,29 +27,29 @@ x-spring-app: &spring-app
 
 
 services:
-  app1:
+  prompt-safeguard:
     <<: *spring-app
     working_dir: /app
     volumes:
-      - ./spring-app-1:/app
+      - ./prompt-safeguard:/app
       - maven-cache:/root/.m2
       - j9-cache:/cache
     command: ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.devtools.restart.enabled=true"
     ports:
-      - "8081:8080"
-      - "35729:35729"
+      - "${PROMPT_SAFEGUARD_PORT:-8081}:8080"
+      - "${PROMPT_SAFEGUARD_LIVERELOAD_PORT:-35729}:35729"
 
-  app2:
-    <<: *spring-app
-    working_dir: /app
-    volumes:
-      - ./spring-app-2:/app
-      - maven-cache:/root/.m2
-      - j9-cache:/cache
-    command: ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.devtools.restart.enabled=true"
-    ports:
-      - "8082:8080"
-      - "35730:35729"
+  # app2:
+  #   <<: *spring-app
+  #   working_dir: /app
+  #   volumes:
+  #     - ./spring-app-2:/app
+  #     - maven-cache:/root/.m2
+  #     - j9-cache:/cache
+  #   command: ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.devtools.restart.enabled=true"
+  #   ports:
+  #     - "${APP2_PORT:-8082}:8080"
+  #     - "${APP2_LIVERELOAD_PORT:-35730}:35729"
 
 volumes:
   maven-cache:

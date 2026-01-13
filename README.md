@@ -15,6 +15,17 @@ docker compose up -d
 
 Open WebUI will be available at <http://localhost:3000>
 
+## Configuration
+
+Ports are configured in `.env`:
+
+```env
+OLLAMA_PORT=11434
+WEBUI_PORT=3000
+```
+
+Override at runtime: `WEBUI_PORT=8080 docker compose up -d`
+
 ## Prerequisites
 
 ### Docker Desktop Memory Requirements

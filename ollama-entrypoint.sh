@@ -1,8 +1,9 @@
 #!/bin/bash
 
+  # "llama-guard3:1b" "gpt-oss-safeguard"
 # Default models to ensure are present
 DEFAULT_MODELS=(
-  "llama-guard3:1b" "gpt-oss-safeguard"
+  "gpt-oss"
 )
 
 # Allow runtime override via OLLAMA_MODELS env var (comma-separated)
@@ -87,7 +88,7 @@ echo "//> Ollama is ready."
 
 # Check each model and pull if not present
 for MODEL in "${MODELS[@]}"; do
-  if ! ollama list | grep -q "$MODEL"; then
+  if ! ollama list | awk '{print $1}' | grep -qx "$MODEL"; then
     echo "//> Pulling $MODEL model..."
     ollama pull "$MODEL"
     echo "//> Model $MODEL pulled successfully."

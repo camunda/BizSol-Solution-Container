@@ -27,11 +27,11 @@ x-spring-app: &spring-app
 
 
 services:
-  prompt-safeguard:
+  bb-prompt-safeguard:
     <<: *spring-app
     working_dir: /app
     volumes:
-      - ./prompt-safeguard/JsonConverter:/app
+      - ./bb-prompt-safeguard/JsonConverter:/app
       - maven-cache:/root/.m2
     command: mvn spring-boot:run 
     ports:

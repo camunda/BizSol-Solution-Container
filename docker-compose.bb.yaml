@@ -29,6 +29,9 @@ x-spring-app: &spring-app
 services:
   bb-prompt-safeguard:
     <<: *spring-app
+    depends_on:
+      camunda-check:
+        condition: service_completed_successfully
     working_dir: /app
     volumes:
       - ./bb-prompt-safeguard/JsonConverter:/app

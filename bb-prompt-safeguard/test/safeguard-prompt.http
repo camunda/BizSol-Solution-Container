@@ -57,9 +57,7 @@ Content-Type: application/json
   "processDefinitionId": "safeguard-agent",
   "variables": {
     "systemPrompt": "{{systemPrompt}}",
-    "userPromptToSafeguard": "{{userPrompt}}",
-    "CAMUNDAAGENT_AWS_ACCESS_KEY":"{{CAMUNDAAGENT_AWS_ACCESS_KEY}}",
-    "CAMUNDAAGENT_AWS_SECRET_KEY":"{{CAMUNDAAGENT_AWS_SECRET_KEY}}"
+    "userPromptToSafeguard": "{{userPrompt}}"
   },
   "awaitCompletion": true
 }

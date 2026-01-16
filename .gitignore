@@ -2,6 +2,11 @@
 ollama
 # don't version localstorage
 open-webui
+# dotenv environment variable files
+.env
+.env.*
+!.env.example
+!bb-prompt-safeguard/test/.env
 
 
 
@@ -99,11 +104,6 @@ web_modules/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# dotenv environment variable files
-.env
-.env.*
-!.env.example
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

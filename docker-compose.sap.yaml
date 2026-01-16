@@ -1,0 +1,35 @@
+services:
+  sap-odata-connector:
+    image: camunda/sap-odata-connector:8.7.2
+    platform: linux/amd64
+    container_name: sap-odata-connector
+    restart: always
+    depends_on:
+      camunda-check:
+        condition: service_completed_successfully
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - CAMUNDA_CLIENT_MODE=self-managed
+      - CAMUNDA_CLIENT_ZEEBE_GRPCADDRESS=http://${CAMUNDA_HOST:-host.docker.internal}:${CAMUNDA_GRPC_PORT:-26500}
+      - CAMUNDA_CLIENT_ZEEBE_RESTADDRESS=${CAMUNDA_PROTOCOL:-http}://${CAMUNDA_HOST:-host.docker.internal}:${CAMUNDA_PORT:-8080}
+      - CAMUNDA_CLIENT_AUTH_METHOD=none
+      - OPERATE_CLIENT_ENABLED=false
+      - CAMUNDA_CONNECTOR_POLLING_ENABLED=false
+      - CAMUNDA_CONNECTOR_WEBHOOK_ENABLED=false
+      - LOGGING_LEVEL_ROOT=INFO
+      - LOGGING_LEVEL_IO_CAMUNDA_CONNECTOR_SAP=DEBUG
+      - destinations=[{"name":"localS4","url":"http://sap-mock-server:${SAP_MOCK_PORT:-4004}","Authentication":"NoAuthentication"}]
+
+  sap-mock-server:
+    image: node:lts-alpine
+    platform: linux/amd64
+    container_name: sap-mock-server
+    working_dir: /app
+    volumes:
+      - ./bb-sap-integration/mock-server:/app
+    command: sh -c "npm install && npm start"
+    ports:
+      - "${SAP_MOCK_PORT:-4004}:4004"
+    environment:
+      - NODE_ENV=development

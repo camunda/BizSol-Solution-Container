@@ -13,7 +13,7 @@ Docker Compose setup for a "Process Application" that contains
 ## Services
 
 ### Building Blocks
-- **JSON Converter** (`bb-prompt-safeguard`) - Camunda Job Worker that converts JSON strings to JSON objects (job type: `json-converter`)
+- **JSON Converter** (`BizSol_bb-prompt-safeguard`) - Camunda Job Worker that converts JSON strings to JSON objects (job type: `json-converter`)
 
 ### Infrastructure
 
@@ -108,7 +108,7 @@ docker exec ollama ollama pull llama3.2
 
 This project includes reusable Camunda Job Workers as "building blocks" for AI-powered process automation.
 
-### JSON Converter (`bb-prompt-safeguard/JsonConverter`)
+### JSON Converter (`BizSol_bb-prompt-safeguard/JsonConverter`)
 
 A Spring Boot Job Worker that converts JSON strings to JSON objects.
 
@@ -121,21 +121,21 @@ A Spring Boot Job Worker that converts JSON strings to JSON objects.
 **Run with Docker Compose:**
 
 ```bash
-docker compose -f docker-compose.bb.yaml up bb-prompt-safeguard -d
+docker compose -f docker-compose.bb.yaml up BizSol_bb-prompt-safeguard -d
 ```
 
 **Run standalone:**
 
 ```bash
-cd bb-prompt-safeguard/JsonConverter
+cd BizSol_bb-prompt-safeguard/JsonConverter
 mvn spring-boot:run
 ```
 
-For more details, see [bb-prompt-safeguard/JsonConverter/README.md](bb-prompt-safeguard/JsonConverter/README.md).
+For more details, see [BizSol_bb-prompt-safeguard/JsonConverter/README.md](BizSol_bb-prompt-safeguard/JsonConverter/README.md).
 
 ### Sample BPMN Processes
 
 | Building Block | Sample Processes |
 | -------------- | ---------------- |
-| Inference Monitor Agent | `bb-Inference-Monitor-Agent/inference-monitor-samples.bpmn`, `bb-Inference-Monitor-Agent/min-ollama-sample.bpmn` |
-| Prompt Safeguard | `bb-prompt-safeguard/safeguard-agent.orig.bpmn` |
+| Inference Monitor Agent | `BizSol_bb-Inference-Monitor-Agent/inference-monitor-samples.bpmn`, `BizSol_bb-Inference-Monitor-Agent/min-ollama-sample.bpmn` |
+| Prompt Safeguard | `BizSol_bb-prompt-safeguard/safeguard-agent.orig.bpmn` |

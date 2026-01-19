@@ -27,7 +27,7 @@ services:
     container_name: sap-mock-server
     working_dir: /app
     volumes:
-      - ./bb-sap-integration/mock-server:/app
+      - ./BizSol_bb-sap-integration/mock-server:/app
     command: sh -c "npm install && npm start"
     ports:
       - "${SAP_MOCK_PORT:-4004}:4004"

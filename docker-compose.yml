@@ -1,7 +1,7 @@
 include:
   - docker-compose.ai.yaml
   - docker-compose.bb.yaml
-  - docker-compose.sap.yaml
+  - BizSol_bb-sap-integration/docker-compose.sap.yaml
 
 services:
   # init service that waits for Camunda (c8run) to be available before other services start

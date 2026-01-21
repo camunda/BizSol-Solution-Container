@@ -14,8 +14,9 @@ check_port() {
 
 if check_port "$DOCKER_HOST" "$OLLAMA_PORT"; then
   echo "//> Ollama is already running on the host at ${DOCKER_HOST}:${OLLAMA_PORT}"
-  echo "//> Using host Ollama service. Container will exit without starting local service."
-  exit 0
+  echo "//> Using host Ollama service. Container will stay alive but idle."
+  # Keep container alive to satisfy dependencies without starting ollama service
+  while true; do sleep 3600; done
 fi
 
 echo "//> No Ollama service detected on host. Starting container service..."

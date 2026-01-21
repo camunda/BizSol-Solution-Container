@@ -22,7 +22,8 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:
-      # - OLLAMA_BASE_URL=http://ollama:11434
+      # this points either to the native ollama instance
+      # or to the above container
       - OLLAMA_BASE_URL=http://host.docker.internal:11434
       - WEBUI_AUTH=false
     volumes:

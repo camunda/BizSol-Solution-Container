@@ -137,5 +137,5 @@ For more details, see [BizSol_bb-prompt-safeguard/JsonConverter/README.md](BizSo
 
 | Building Block | Sample Processes |
 | -------------- | ---------------- |
-| Inference Monitor Agent | `BizSol_bb-Inference-Monitor-Agent/inference-monitor-samples.bpmn`, `BizSol_bb-Inference-Monitor-Agent/min-ollama-sample.bpmn` |
+| Token Monitor | `BizSol_bb-Token-Monitor/inference-monitor-samples.bpmn`, `BizSol_bb-Token-Monitor/min-ollama-sample.bpmn` |
 | Prompt Safeguard | `BizSol_bb-prompt-safeguard/safeguard-agent.orig.bpmn` |

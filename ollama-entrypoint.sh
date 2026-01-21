@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# Check if Ollama is already running on the host
+OLLAMA_PORT=${OLLAMA_PORT:-11434}
+DOCKER_HOST=${DOCKER_HOST:-host.docker.internal}
+
+echo "//> Checking if Ollama is running on ${DOCKER_HOST}:${OLLAMA_PORT}..."
+
+# Use bash built-in /dev/tcp for port checking (works on macOS and Linux)
+check_port() {
+  timeout 2 bash -c "cat < /dev/null > /dev/tcp/$1/$2" 2>/dev/null
+  return $?
+}
+
+if check_port "$DOCKER_HOST" "$OLLAMA_PORT"; then
+  echo "//> Ollama is already running on the host at ${DOCKER_HOST}:${OLLAMA_PORT}"
+  echo "//> Using host Ollama service. Container will exit without starting local service."
+  exit 0
+fi
+
+echo "//> No Ollama service detected on host. Starting container service..."
+
   # "llama-guard3:1b" "gpt-oss-safeguard"
 # Default models to ensure are present
 DEFAULT_MODELS=(

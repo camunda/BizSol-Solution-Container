@@ -8,6 +8,8 @@ open-webui
 !.env.example
 !BizSol_bb-prompt-safeguard/test/.env
 
+# no vscode settings
+.vscode
 
 
 

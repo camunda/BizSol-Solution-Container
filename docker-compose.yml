@@ -1,6 +1,7 @@
 include:
   - docker-compose.ai.yaml
   - BizSol_bb-Verification-Agent/docker-compose.verification-agent.yaml
+  - BizSol_bb-sample/docker-compose.yaml
   
 services:
   # init service that waits for Camunda (c8run) to be available before other services start

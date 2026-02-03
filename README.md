@@ -18,7 +18,6 @@ The overall startup of the Container checks for a running Camunda instance on (p
 
 - **ollama** for local LLMs
 - **Open WebUI** for freestyle chat interface
-- **`c8ctl`** fpr BPMN, DMN, and forms handling (deployment, execution)
 
 ### `ollama`
 
@@ -34,4 +33,4 @@ The services checks at start-time whether a local, native `ollama` instance is r
 ## Building Blocks
 
 
-Building Blocks (prefixed with `BizSol_bb`) are ready to run Camunda solutions that can be reused here as part of a "Business Solution".
+Building Blocks (prefixed with `BizSol_bb`) are ready to run Camunda solutions that can be reused here as part of a "Business Solution". A sample is included as `BizSol_bb-sample`, showcasing the idea; the reuse of BPMN artifacts from `BizSol_bb-sample` happens in `my-solution/my-process.bpmn`.

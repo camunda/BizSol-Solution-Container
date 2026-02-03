@@ -1,0 +1,4 @@
+io/camunda/demo/process_order/ChargePaymentWorker.class
+io/camunda/demo/process_order/CheckInventoryWorker.class
+io/camunda/demo/process_order/ProcessOrderApplication.class
+io/camunda/demo/process_order/ShipItemsWorker.class

@@ -3,6 +3,8 @@
 This container serves as a Docker Compose-based transport means for Camunda Business Solutions.  
 The latter consist of predefinded, production-ready Building Blocks that are also Camunda applications.
 
+![alt text](<_assets/Process Application Container.png>)
+
 The Camunda Process Application Container serves well for Demo, Development and QA purposes but should not be taken into Production as-is - because your specific infrastructure requirements might not be fully reflected here.
 
 ## Configuration
@@ -32,5 +34,13 @@ The services checks at start-time whether a local, native `ollama` instance is r
 
 ## Building Blocks
 
+Building Blocks (any dir name containing `*_bb-*`) are considered ready to run artifacts that can be reused here as part of a "Business Solution". A sample is included as `BizSol_bb-sample`, showcasing the idea; the reuse of BPMN artifacts from `BizSol_bb-sample` happens in `my-solution/my-process.bpmn`.
 
-Building Blocks (prefixed with `BizSol_bb`) are ready to run Camunda solutions that can be reused here as part of a "Business Solution". A sample is included as `BizSol_bb-sample`, showcasing the idea; the reuse of BPMN artifacts from `BizSol_bb-sample` happens in `my-solution/my-process.bpmn`.
+## Development Accelerator
+
+In conjunction with `c8run` and `c8ctl`, this setup is intended to enable "flight-mode" development, with no external network dependencies. This isolated environment in turn provides the fastest possible feedback loop for developing Camunda-based solutions.
+
+![alt text](_assets/inner-loop.png)
+
+`c8run`: https://downloads.camunda.cloud/release/camunda/c8run/  
+`c8ctl`: https://www.npmjs.com/package/@camunda8/cli

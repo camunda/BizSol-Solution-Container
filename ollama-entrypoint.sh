@@ -21,10 +21,10 @@ fi
 
 echo "//> No Ollama service detected on host. Starting container service..."
 
-  # "llama-guard3:1b" "gpt-oss-safeguard"
+  # "llama-guard3:1b" "gpt-oss"
 # Default models to ensure are present
 DEFAULT_MODELS=(
-  "gpt-oss"
+  "qwen2.5:7b"
 )
 
 # Allow runtime override via OLLAMA_MODELS env var (comma-separated)

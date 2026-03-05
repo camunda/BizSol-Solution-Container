@@ -1,6 +1,5 @@
 include:
   - docker-compose.ai.yaml
-  - BizSol_bb-Verification-Agent/docker-compose.verification-agent.yaml
   - BizSol_bb-sample/docker-compose.yaml
   
 services:

@@ -15,6 +15,7 @@ services:
     depends_on:
       camunda-check:
         condition: service_completed_successfully
+        required: false
 
   sample-node-worker:
     image: node:22-alpine
@@ -31,6 +32,7 @@ services:
     depends_on:
       camunda-check:
         condition: service_completed_successfully
+        required: false
 
 volumes:
   sample-maven-cache:

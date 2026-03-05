@@ -3,9 +3,12 @@ services:
     image: ollama/ollama:latest
     container_name: ollama
     restart: on-failure
+    profiles:
+      - ollama
     depends_on:
       camunda-check:
         condition: service_completed_successfully
+        required: false
     ports:
       - "${OLLAMA_PORT:-11434}:11434"
     volumes:
@@ -17,6 +20,8 @@ services:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
     restart: always
+    profiles:
+      - ollama
     ports:
       - "${WEBUI_PORT:-3000}:8080"
     extra_hosts:
@@ -29,4 +34,5 @@ services:
     volumes:
       - ./open-webui:/app/backend/data
     depends_on:
-      - ollama
+      ollama:
+        condition: service_started

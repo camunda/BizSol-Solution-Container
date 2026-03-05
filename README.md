@@ -15,17 +15,46 @@ Also, all Building Blocks are expected to bring their own `.env`, which will aut
 
 ## Base Services
 
-The overall startup of the Container checks for a running Camunda instance on (per default) `localhost:8080`. 
+An optional on-demand `camunda-check` service can check for a running Camunda instance on (per default) `localhost:8080`.
+An LLM server must be running and reachable on `localhost:11434`.
+
+Sample startup commands:
+
+```bash
+# Default startup (no optional profile services)
+docker compose up -d
+
+# Run Camunda availability check on demand
+docker compose --profile checks up camunda-check
+
+# Start optional local LLM stack (ollama + Open WebUI)
+docker compose --profile ollama up -d
+
+# Start everything including optional checks and LLM stack
+docker compose --profile checks --profile ollama up -d
+```
+
+Sample stop commands:
+
+```bash
+# Stop and remove all running services from this compose project
+docker compose down
+
+# Stop optional local LLM stack services explicitly
+docker compose stop ollama open-webui
+
+# Stop Camunda check container if started on demand
+docker compose stop camunda-check
+```
 
 
-- **ollama** for local LLMs
-- **Open WebUI** for freestyle chat interface
+- **ollama + Open WebUI** (optional, on-demand)
 
 ### `ollama`
 
 `ollama:11434`
 
-The services checks at start-time whether a local, native `ollama` instance is running. If so, it will be reused in the overall setup. If not, the dockerized `ollama` is started and used. For the latter, the "gpt-oss" model is pulled per default. You can customize this by changing `DEFAULT_MODELS` in `ollama-entrypoint.sh`.
+The dockerized `ollama` service is optional and does not start by default. Start it on demand if you want a local bundled LLM server. It serves on `localhost:11434`; `open-webui` is in the same profile and starts together with `ollama`.
 
 ### Open WebUI
 

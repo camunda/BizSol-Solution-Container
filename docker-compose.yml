@@ -6,6 +6,8 @@ services:
   # init service that waits for Camunda (c8run) to be available before other services start
   camunda-check:
     image: busybox
+    profiles:
+      - checks
     extra_hosts:
       - "host.docker.internal:host-gateway"
     environment:

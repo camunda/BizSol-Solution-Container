@@ -1,16 +1,16 @@
-# Camunda Process Application Container
+# Camunda Solutions Container
 
 This container serves as a Docker Compose-based transport means for Camunda Business Solutions.  
 The latter consist of predefinded, production-ready Building Blocks that are also Camunda applications.
 
 ![alt text](<_assets/Process Application Container.png>)
 
-The Camunda Process Application Container serves well for Demo, Development and QA purposes but should not be taken into Production as-is - because your specific infrastructure requirements might not be fully reflected here.
+The Camunda solutions Container serves well for Demo, Development and QA purposes but _must not_ be taken into Production as-is - because your specific infrastructure requirements might not be fully reflected here.
 
 ## Configuration
 
 This host/port and all other hostnames and ports can be configured in a `.env`, see `.env.example` as a template.  
-Also, all Building Blocks are expected to bring their own `.env`, which will automatically be merged into the overall scope by Docker Compose.
+Also, all Building Blocks are expected to bring their own `.env` or `docker.env`, which will automatically be merged into the overall scope by Docker Compose.
 
 
 ## Base Services

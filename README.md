@@ -15,9 +15,9 @@ Also, all Building Blocks are expected to bring their own `.env`, which will aut
 
 ## Base Services
 
-### Cosmos DB
+### Vector DB (Cosmos DB)
 
-
+A local [Azure Cosmos DB Emulator](https://learn.microsoft.com/en-us/azure/cosmos-db/emulator) (`vnext-preview`) running in HTTP mode. It provides a NoSQL-compatible vector database for use with Camunda connectors (e.g. the Vector DB connector at `http://cosmosdb:8081`). Data is persisted to `./container-maps/cosmosdb-data`. The Data Explorer UI is available at `http://localhost:1234`.
 
 ### camunda-check
 An optional on-demand `camunda-check` service can check for a running Camunda instance on (per default) `localhost:8080`.
@@ -66,7 +66,7 @@ The dockerized `ollama` service is optional and does not start by default. Start
 `http://localhost:3000`
 
 
-## Port Mappings and FS Exports
+## Port- and FS Mappings
 
 ### Port Mappings
 

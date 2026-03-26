@@ -15,6 +15,11 @@ Also, all Building Blocks are expected to bring their own `.env`, which will aut
 
 ## Base Services
 
+### Cosmos DB
+
+
+
+### camunda-check
 An optional on-demand `camunda-check` service can check for a running Camunda instance on (per default) `localhost:8080`.
 An LLM server must be running and reachable on `localhost:11434`.
 
@@ -60,6 +65,33 @@ The dockerized `ollama` service is optional and does not start by default. Start
 
 `http://localhost:3000`
 
+
+## Port Mappings and FS Exports
+
+### Port Mappings
+
+| File | Service | Host Port | Container Port | Purpose |
+|---|---|---|---|---|
+| `docker-compose.ai.yaml` | `ollama` | `${OLLAMA_PORT:-11434}` | 11434 | Ollama LLM API |
+| `docker-compose.ai.yaml` | `open-webui` | `${WEBUI_PORT:-3000}` | 8080 | Open WebUI |
+| `docker-compose.vector-db.yml` | `cosmosdb` | `${COSMOSDB_API_PORT:-8181}` | 8081 | NoSQL API endpoint (HTTP) |
+| `docker-compose.vector-db.yml` | `cosmosdb` | `${COSMOSDB_HEALTH_PORT:-8180}` | 8080 | Health/readiness probes |
+| `docker-compose.vector-db.yml` | `cosmosdb` | `${COSMOSDB_EXPLORER_PORT:-1234}` | 1234 | Data Explorer UI |
+
+`docker-compose.yml` (`camunda-check`) and `BizSol_bb-sample/docker-compose.yaml` (`sample-java-worker`, `sample-node-worker`) expose no ports.
+
+### Filesystem Mappings
+
+| File | Service | Host Path | Container Path | Type |
+|---|---|---|---|---|
+| `docker-compose.ai.yaml` | `ollama` | `./container-maps/ollama` | `/root/.ollama` | Bind mount (model data) |
+| `docker-compose.ai.yaml` | `ollama` | `./container-maps/ollama-entrypoint.sh` | `/ollama-entrypoint.sh` | Bind mount (entrypoint script) |
+| `docker-compose.ai.yaml` | `open-webui` | `./container-maps/open-webui` | `/app/backend/data` | Bind mount (WebUI data) |
+| `docker-compose.vector-db.yml` | `cosmosdb` | `./container-maps/cosmosdb-data` | `/tmp/cosmos/appdata` | Bind mount (persistence) |
+| `BizSol_bb-sample/docker-compose.yaml` | `sample-java-worker` | `./java` | `/app` | Bind mount (source code) |
+| `BizSol_bb-sample/docker-compose.yaml` | `sample-java-worker` | `sample-maven-cache` | `/root/.m2` | Named volume (Maven cache) |
+| `BizSol_bb-sample/docker-compose.yaml` | `sample-node-worker` | `./nodejs` | `/app` | Bind mount (source code) |
+| `BizSol_bb-sample/docker-compose.yaml` | `sample-node-worker` | `sample-node-modules` | `/app/node_modules` | Named volume (node_modules cache) |
 
 ## Building Blocks
 

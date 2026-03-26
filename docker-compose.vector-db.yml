@@ -7,9 +7,9 @@ services:
     # Camunda Vector DB connector endpoint: http://cosmosdb:8081
     command: ["--protocol", "http"]
     ports:
-      - "8181:8081"   # NoSQL API endpoint (HTTP, no TLS)
-      - "8180:8080"   # Health/readiness probes
-      - "1234:1234"   # Data Explorer UI
+      - "${COSMOSDB_API_PORT:-8181}:8081"   # NoSQL API endpoint (HTTP, no TLS)
+      - "${COSMOSDB_HEALTH_PORT:-8180}:8080"   # Health/readiness probes
+      - "${COSMOSDB_EXPLORER_PORT:-1234}:1234"   # Data Explorer UI
     environment:
       - AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE=true
     volumes:

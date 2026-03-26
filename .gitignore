@@ -1,17 +1,12 @@
-# don't version models
-ollama
-# don't version localstorage
-open-webui
+# any mappings from docker containers to local fs
+container-maps
 # dotenv environment variable files
 .env
 .env.*
 !.env.example
-!BizSol_bb-prompt-safeguard/test/.env
 
 # no vscode settings
 .vscode
-
-
 
 # General
 .DS_Store

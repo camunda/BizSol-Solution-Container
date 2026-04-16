@@ -1,8 +1,3 @@
-include:
-  - docker-compose.ai.yaml
-  - docker-compose.vector-db.yml
-  - BizSol_bb-sample/docker-compose.yaml
-  
 services:
   # init service that waits for Camunda (c8run) to be available before other services start
   camunda-check:

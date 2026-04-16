@@ -3,7 +3,7 @@
 This container serves as a Docker Compose-based transport means for Camunda Business Solutions.  
 The latter consist of predefinded, production-ready Building Blocks that are also Camunda applications.
 
-![alt text](<_assets/Process Application Container.png>)
+![alt text](<_assets/Solution-Container.png>)
 
 The Camunda solutions Container serves well for Demo, Development and QA purposes but _must not_ be taken into Production as-is - because your specific infrastructure requirements might not be fully reflected here.
 

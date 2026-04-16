@@ -1,6 +1,6 @@
 include:
   - docker-compose.ai.yaml
-  - docker-comopose.vector-db.yml
+  - docker-compose.vector-db.yml
   - BizSol_bb-sample/docker-compose.yaml
   
 services:

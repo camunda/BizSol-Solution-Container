@@ -17,5 +17,5 @@ services:
           echo \"Waiting for Camunda ($$HOST:$$PORT)...\";
           sleep 3;
         done;
-        echo 'Camunda is available! Starting services...'
+        echo 'Camunda is available!';
       "

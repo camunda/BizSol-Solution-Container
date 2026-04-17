@@ -1,17 +1,32 @@
+___
+**Technical Preview Release**: This repository contains an early access version of our solutions component, currently under evaluation at Camunda.
+- Features may be incomplete or experimental.
+- Limited support is provided; this code is not part of Camunda Support.
+- Please report any bugs directly in the issues section of the repository.
+- There are no regular updates.
+- There is no guarantee of stability or suitability for production use.
+
+For feedback, please create an issue. :rocket:
+___
+
 # Camunda Solutions Container
 
-This container serves as a Docker Compose-based transport means for Camunda Business Solutions.  
+This container serves as a Docker Compose-based transport means for *Camunda Business Solutions*.
 The latter consist of predefinded, production-ready Building Blocks that are also Camunda applications.
 
 ![alt text](<_assets/Solution-Container.png>)
 
-The Camunda solutions Container serves well for Demo, Development and QA purposes but _must not_ be taken into Production as-is - because your specific infrastructure requirements might not be fully reflected here.
+The illustration explains the planned concept:
+- The solution container in itself contains required Dockerized services and Camunda artifacts.
+- These make use of pre-defined (but potentially adapted) predefined Building Blocks.
+- The entire setup and execution of the overall solution then works easily using Docker Compose and c8ctl command line features.
+
+The Camunda solutions Container serves well for Demo, Development and QA purposes but _must not_ be taken into Production as-is --- because your specific infrastructure requirements might not be fully reflected here.
 
 ## Configuration
 
-This host/port and all other hostnames and ports can be configured in a `.env`, see `.env.example` as a template.  
+This host/port and all other hostnames and ports can be configured in a `.env` file, see `.env.example` as a template and copy it for your local development.
 Also, all Building Blocks are expected to bring their own `.env` or `docker.env`, which will automatically be merged into the overall scope by Docker Compose.
-
 
 ## Services
 
